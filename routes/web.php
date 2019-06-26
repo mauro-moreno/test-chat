@@ -14,3 +14,9 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+Route::get('/test/{locale}', function ($locale) {
+    App::setLocale($locale);
+    return view('test');
+});
