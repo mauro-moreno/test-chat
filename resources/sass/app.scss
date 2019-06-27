@@ -15,3 +15,15 @@
         border-color: #4ac9ff;
     }
 }
+
+.card {
+    border-color: $primary;
+    h5 {
+        font-family: "Oswald", sans-serif;
+    }
+    .card-footer {
+        .btn-primary {
+            font-family: "Oswald", sans-serif;
+        }
+    }
+}
