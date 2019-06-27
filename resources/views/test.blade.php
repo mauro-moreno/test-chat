@@ -8,8 +8,9 @@
 
     <link href="https://unpkg.com/basscss@8.0.2/css/basscss.min.css" rel="stylesheet">
 </head>
-<body class="m0">
+<body class="m0 relative">
     <img class="sm-hide md-hide lg-hide" src="/img/test-mobile.png" width="100%"/>
     <img class="xs-hide" src="/img/test-desktop.png" width="100%"/>
+    <iframe class="fixed right-0 bottom-0 col-12 sm-col-4" src="/{{ app()->getLocale() }}" height="40px" allowtransparency="true" frameborder="0" />
 </body>
 </html>

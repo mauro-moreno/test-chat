@@ -1,8 +1,17 @@
 // Fonts
-@import url('https://fonts.googleapis.com/css?family=Nunito');
+@import url('https://fonts.googleapis.com/css?family=Oswald');
 
 // Variables
 @import 'variables';
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
+
+.btn-primary {
+    &:hover,
+    &:focus,
+    &:active {
+        background-color: #4ac9ff;
+        border-color: #4ac9ff;
+    }
+}
