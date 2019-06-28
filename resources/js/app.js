@@ -8,6 +8,14 @@ require('./bootstrap');
 
 const ANIMATION_TIME = 500;
 
+const iframeContainer = '#test-chat';
+const buttonLauncher = '#btn-launcher';
+const buttonClose = '#btn-close';
+const buttonSend = '#btn-send';
+const questionTextarea = '#question';
+
+const chatContainer = $('#text-container');
+
 const showMessage = (message, isQuestion = true) => {
     const classes = [
         'col-9',
@@ -42,26 +50,34 @@ const handleResponse = (response) => {
     console.log(response);
 };
 
-const chatContainer = $('#text-container');
+const animateChat = (height) => {
+    $(iframeContainer, window.parent.document).animate({height: `${height}px`}, ANIMATION_TIME);
+};
 
-$('#button-launcher').on('click', () => {
-    $('#test-chat', window.parent.document).animate({height: "400px"}, ANIMATION_TIME);
-    $('#btn-close').show();
+$(buttonLauncher).on('click', () => {
+    animateChat(400);
+    $(buttonClose).show();
 });
 
-$('#btn-close').on('click', () => {
-    $('#test-chat', window.parent.document).animate({height: "46px"}, ANIMATION_TIME);
-    $('#btn-close').hide();
+$(buttonClose).on('click', () => {
+    animateChat(46);
+    $(buttonClose).hide();
 });
 
-$('#btn-send').on('click', () => {
-    const message = $('#question').val();
-    question(chatContainer, message);
-    answer(chatContainer, 'Test');
-    axios
-        .post('/api/v1/answers', {question: message})
-        .then(handleResponse)
-        .catch((error) => {
-            console.log(error);
-        });
+$(buttonSend).on('click', () => {
+    const questionInput = $(questionTextarea);
+    const message = questionInput.val().replace(/(<([^>]+)>)/ig,"");
+    if (message !== '') {
+        question(chatContainer, message);
+        answer(chatContainer, 'Test');
+        questionInput.val('');
+        axios
+            .post('/api/v1/answers', {question: message})
+            .then(handleResponse)
+            .catch((error) => {
+                console.log(error);
+            });
+    } else {
+        questionInput.focus();
+    }
 });

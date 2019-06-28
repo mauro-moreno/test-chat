@@ -15,7 +15,7 @@
             <button type="button" class="btn close position-absolute text-white" aria-label="Close" id="btn-close">
                 <span aria-hidden="true">&times;</span>
             </button>
-            <h5 id="button-launcher" class="card-header bg-primary text-center text-white text-uppercase">{{ __('chat.launcher') }}</h5>
+            <h5 id="btn-launcher" class="card-header bg-primary text-center text-white text-uppercase">{{ __('chat.launcher') }}</h5>
             <div class="card-body">
                 <div class="container-fluid" id="text-container">
                     <div class="row mb-2">
