@@ -16,19 +16,24 @@
     }
 }
 
+#btn-close {
+    top: .5rem;
+    right: 1rem;
+    display: none;
+}
+
 .card {
     border-color: $primary;
     h5 {
         font-family: "Oswald", sans-serif;
+    }
+    .card-body {
+        height: 269px;
+        overflow-y: scroll;
     }
     .card-footer {
         .btn-primary {
             font-family: "Oswald", sans-serif;
         }
     }
-}
-
-#btn-close {
-    top: .5rem;
-    right: 1rem;
 }

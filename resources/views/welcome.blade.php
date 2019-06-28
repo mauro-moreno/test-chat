@@ -12,22 +12,12 @@
     </head>
     <body>
         <div class="card position-relative">
-            <button type="button" class="btn close position-absolute text-white" aria-label="Close" id="btn-close" style="display: none;">
+            <button type="button" class="btn close position-absolute text-white" aria-label="Close" id="btn-close">
                 <span aria-hidden="true">&times;</span>
             </button>
             <h5 id="button-launcher" class="card-header bg-primary text-center text-white text-uppercase">{{ __('chat.launcher') }}</h5>
-            <div class="card-body" style="height: 269px; overflow: auto">
-                <div class="container-fluid">
-                    <div class="row mb-2">
-                        <div class="col-9 bg-light pt-2 pb-2 rounded">
-                            {{ __('chat.greeting') }}
-                        </div>
-                    </div>
-                    <div class="row mb-2">
-                        <div class="offset-3 col-9 bg-primary pt-2 pb-2 rounded text-white">
-                            Test
-                        </div>
-                    </div>
+            <div class="card-body">
+                <div class="container-fluid" id="text-container">
                     <div class="row mb-2">
                         <div class="col-9 bg-light pt-2 pb-2 rounded">
                             {{ __('chat.greeting') }}
@@ -38,8 +28,8 @@
             <div class="card-footer">
                 <div class="container-fluid">
                     <div class="row">
-                        <textarea class="form-control col-9"></textarea>
-                        <button class="col-3 btn-primary text-uppercase">{{ __('chat.send') }}</button>
+                        <textarea id="question" class="form-control col-9"></textarea>
+                        <button id="btn-send" class="col-3 btn-primary text-uppercase">{{ __('chat.send') }}</button>
                     </div>
                 </div>
             </div>
