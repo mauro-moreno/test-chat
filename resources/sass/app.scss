@@ -30,6 +30,9 @@
     .card-body {
         height: 269px;
         overflow-y: scroll;
+        p, li, ul {
+            margin-bottom: 0;
+        }
     }
     .card-footer {
         .btn-primary {

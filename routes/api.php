@@ -13,6 +13,8 @@ use Illuminate\Http\Request;
 |
 */
 
+Route::get('/{locale}/chat/ask', 'API\ChatController@ask');
+
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
