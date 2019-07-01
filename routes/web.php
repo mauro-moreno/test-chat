@@ -10,14 +10,11 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/home', 'HomeController@index')->name('home');
-
 Auth::routes(['register' => false]);
 
 Route::get('/{locale?}', function ($locale = 'en') {
     App::setLocale($locale);
-    return view('welcome');
+    return view('chat');
 })->where('locale', '[a-z]{2}');
 
 

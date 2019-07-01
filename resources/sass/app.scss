@@ -7,31 +7,38 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
-.btn-primary {
-    &:hover,
-    &:focus,
-    &:active {
-        background-color: #4ac9ff;
-        border-color: #4ac9ff;
-    }
-}
-
-#btn-close {
-    top: .5rem;
-    right: 1rem;
-    display: none;
-}
-
-.card {
+#chat {
     border-color: $primary;
+
     h5 {
         font-family: "Oswald", sans-serif;
     }
+
+    .btn-primary {
+        &:hover,
+        &:focus,
+        &:active {
+            background-color: #4ac9ff;
+            border-color: #4ac9ff;
+        }
+    }
+
+    #btn-close {
+        top: .5rem;
+        right: 1rem;
+        display: none;
+    }
+
     .card-body {
         height: 269px;
         overflow-y: scroll;
         p, li, ul {
             margin-bottom: 0;
+        }
+        .container-fluid {
+            .row:last-child {
+                margin-bottom: 0 !important;
+            }
         }
     }
     .card-footer {

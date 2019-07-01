@@ -2,27 +2,39 @@
 
 namespace App\Http\Controllers\API;
 
+use App\Answer;
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 
 class ChatController extends Controller
 {
     public function ask($lang)
     {
+        $answers = Answer::where('language_id', '=', $lang)
+            ->where('question', 'like', '%' . request()->get('question') . '%')
+            ->get();
+
+        switch ($answers->count()) {
+            case 0:
+                $action = 'none';
+                $data = new Answer([
+                    'question' => '--',
+                    'answer' => __('chat.did_not_understand'),
+                ]);
+                break;
+            case 1:
+                $action = 'one';
+                $data = $answers->first();
+                break;
+            default:
+                $action = 'more';
+                $data = $answers;
+                break;
+        }
+        $answers->first();
+
         return response()->json([
-            'data' => [
-                [
-                    'id' => 1,
-                    'question' => 'Test 1',
-                    'answer' => 'Answer',
-                ],
-                [
-                    'id' => 2,
-                    'question' => 'Test 2',
-                    'answer' => 'Answer',
-                ]
-            ],
-            'action' => 'more',
+            'data' => $data,
+            'action' => $action,
             'description' => __('chat.description_more')
         ]);
     }

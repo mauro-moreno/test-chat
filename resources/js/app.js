@@ -13,12 +13,16 @@ let countWrong = 0;
 /** ELEMENTS */
 
 const iframeContainer = '#test-chat';
+const chat = '#chat';
+
 const buttonLauncher = '#btn-launcher';
 const buttonClose = '#btn-close';
 const buttonSend = '#btn-send';
 const questionTextarea = '#question';
 const questionFeedback = '.question';
 const chatContainer = '#text-container';
+
+const locale = $(chat).data('locale');
 
 
 /** ANIMATIONS */
@@ -65,7 +69,7 @@ const answer = (element, message) => {
 const sendQuestion = message => {
     question(chatContainer, message);
     axios
-        .get('/api/es/chat/ask', {question: message})
+        .get(`/api/${locale}/chat/ask`, {params: {question: message}})
         .then((response) => {
             answer(chatContainer, receiveAnswer(response));
         })

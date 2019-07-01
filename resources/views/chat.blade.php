@@ -11,7 +11,7 @@
         <link rel="stylesheet" href="/css/app.css" type="text/css"/>
     </head>
     <body>
-        <div class="card position-relative">
+        <div id="chat" class="card position-relative" data-locale="{{ app()->getLocale() }}">
             <button type="button" class="btn close position-absolute text-white" aria-label="Close" id="btn-close">
                 <span aria-hidden="true">&times;</span>
             </button>
