@@ -20,14 +20,18 @@ class ChatController extends Controller
                     'question' => '--',
                     'answer' => __('chat.did_not_understand'),
                 ]);
+                $parameter = null;
                 break;
             case 1:
-                $action = 'one';
-                $data = $answers->first();
+                $answer = $answers->first();
+                $action = $answer->action;
+                $data = $answer;
+                $parameter = $answer->parameter;
                 break;
             default:
                 $action = 'more';
                 $data = $answers;
+                $parameter = __('chat.description_more');
                 break;
         }
         $answers->first();
@@ -35,7 +39,7 @@ class ChatController extends Controller
         return response()->json([
             'data' => $data,
             'action' => $action,
-            'description' => __('chat.description_more')
+            'parameter' => $parameter
         ]);
     }
 }

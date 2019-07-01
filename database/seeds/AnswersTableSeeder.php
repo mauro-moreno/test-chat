@@ -35,7 +35,7 @@ class AnswersTableSeeder extends Seeder
         $answer->question = 'Forgot password';
         $answer->answer = 'Redirecting to forgot...';
         $answer->action = 'redirect';
-        $answer->description = 'http://www.bobshop.com';
+        $answer->parameter = 'https://www.bobshop.com/en/account/password';
         $answer->save();
 
         $answer = new Answer();
@@ -61,6 +61,7 @@ class AnswersTableSeeder extends Seeder
         $answer->question = 'Derive to an operator';
         $answer->answer = 'Deriving to an operator.';
         $answer->action = 'derive';
+        $answer->parameter = 'https://www.bobshop.com/en/contact-us';
         $answer->save();
     }
 }

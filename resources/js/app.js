@@ -82,11 +82,20 @@ const receiveAnswer = response => {
     const data = response.data;
 
     const action = {
+        basic: () => {
+            return `<p>${data.data.answer}</p>`;
+        },
+        derive: () => {
+            setTimeout(() => {
+                window.open(data.data.parameter, '_blank');
+            }, ANIMATION_TIME);
+            return `<p>${data.data.answer}</p>`;
+        },
         more: () => {
             const answers = data.data;
             return (
                 `
-                <p>${data.description}</p>
+                <p>${data.parameter}</p>
                 <ul>
                     ${answers.map(item => `<li><a href="#" class="question">${item.question}</a></li>`)
                         .reduce((prevVal, nextVal) => prevVal + nextVal)}
@@ -94,10 +103,13 @@ const receiveAnswer = response => {
                 `
             );
         },
-        one: () => {
+        none: () => {
             return `<p>${data.data.answer}</p>`;
         },
-        none: () => {
+        redirect: () => {
+            setTimeout(() => {
+                window.open(data.data.parameter, '_blank');
+            }, ANIMATION_TIME);
             return `<p>${data.data.answer}</p>`;
         }
     };
