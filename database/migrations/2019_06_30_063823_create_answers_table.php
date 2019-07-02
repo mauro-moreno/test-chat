@@ -15,7 +15,7 @@ class CreateAnswersTable extends Migration
     {
         Schema::create('answers', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('language_id');
+            $table->string('language_id', 2);
             $table->string('question',  100);
             $table->text('answer');
             $table->enum('action', ['basic', 'derive', 'redirect'])->default('basic');
