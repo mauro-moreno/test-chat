@@ -8,7 +8,6 @@ require('./bootstrap');
 
 const ANIMATION_TIME = 500;
 
-let countWrong = 0;
 
 /** ELEMENTS */
 
