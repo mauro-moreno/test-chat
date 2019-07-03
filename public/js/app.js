@@ -36768,7 +36768,6 @@ module.exports = function(module) {
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 var ANIMATION_TIME = 500;
-var countWrong = 0;
 /** ELEMENTS */
 
 var iframeContainer = '#test-chat';
