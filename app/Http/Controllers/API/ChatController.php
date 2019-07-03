@@ -22,24 +22,21 @@ class ChatController extends Controller
                 ]);
                 $parameter = null;
                 break;
+
             case 1:
                 $answer = $answers->first();
                 $action = $answer->action;
                 $data = $answer;
                 $parameter = $answer->parameter;
                 break;
+
             default:
                 $action = 'more';
                 $data = $answers;
                 $parameter = __('chat.description_more');
                 break;
         }
-        $answers->first();
 
-        return response()->json([
-            'data' => $data,
-            'action' => $action,
-            'parameter' => $parameter
-        ]);
+        return response()->json(compact('action', 'data', 'parameter'));
     }
 }
