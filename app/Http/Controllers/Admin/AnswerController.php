@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Answer;
+use App\Http\Requests\Admin\AnswerFormRequest;
 use App\Language;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class AnswerController extends Controller
@@ -17,7 +17,8 @@ class AnswerController extends Controller
     public function index()
     {
         $answers = Answer::all();
-        return view('admin.answers.index', compact('answers'));
+        $actions = Answer::ACTIONS;
+        return view('admin.answers.index', compact('answers', 'actions'));
     }
 
     /**
@@ -28,29 +29,18 @@ class AnswerController extends Controller
     public function create()
     {
         $languages = Language::orderBy('name')->get();
-        $actions = [
-            'basic' => 'Basic answer',
-            'redirect' => 'Redirect to page',
-            'derive' => 'Derive to an operator'
-        ];
+        $actions = Answer::ACTIONS;
         return view('admin.answers.create', compact('languages', 'actions'));
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\Admin\AnswerFormRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(AnswerFormRequest $request)
     {
-        $request->validate([
-            'language_id' => 'required|exists:languages,id',
-            'question' => 'required|max:100',
-            'answer' => 'required',
-            'action' => 'required|in:basic,redirect,derive',
-        ]);
-
         $answer = new Answer([
             'language_id' => $request->get('language_id'),
             'question' => $request->get('question'),
@@ -74,11 +64,7 @@ class AnswerController extends Controller
         $answer = Answer::findOrFail($id);
 
         $languages = Language::orderBy('name')->get();
-        $actions = [
-            'basic' => 'Basic answer',
-            'redirect' => 'Redirect to page',
-            'derive' => 'Derive to an operator'
-        ];
+        $actions = Answer::ACTIONS;
 
         return view('admin.answers.edit', compact('languages', 'actions', 'answer'));
     }
@@ -86,19 +72,12 @@ class AnswerController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\Admin\AnswerFormRequest  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(AnswerFormRequest $request, $id)
     {
-        $request->validate([
-            'language_id' => 'required|exists:languages,id',
-            'question' => 'required|max:100',
-            'answer' => 'required',
-            'action' => 'required|in:basic,redirect,derive',
-        ]);
-
         $answer = Answer::findOrFail($id);
         $answer->language_id = $request->get('language_id');
         $answer->question = $request->get('question');

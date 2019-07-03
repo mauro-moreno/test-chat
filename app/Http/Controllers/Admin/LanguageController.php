@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\LanguageFormRequest;
 use App\Language;
 use Illuminate\Http\Request;
 
@@ -32,16 +33,11 @@ class LanguageController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\Admin\LanguageFormRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(LanguageFormRequest $request)
     {
-        $request->validate([
-            'id'=>'required|max:2',
-            'name'=>'required|max:100'
-        ]);
-
         $language = new Language([
             'id' => $request->get('id'),
             'name' => $request->get('name'),
@@ -67,17 +63,12 @@ class LanguageController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\Admin\LanguageFormRequest  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(LanguageFormRequest $request, $id)
     {
-        $request->validate([
-            'id'=>'required|max:2',
-            'name'=>'required|max:100'
-        ]);
-
         $language = Language::findOrFail($id);
         $language->id = $request->get('id');
         $language->name = $request->get('name');

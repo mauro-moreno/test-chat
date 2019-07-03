@@ -31,7 +31,7 @@
                             <td class="d-none d-sm-table-cell">{{ $answer->id }}</td>
                             <td>{{ $answer->language_id }}</td>
                             <td>{{ $answer->question }}</td>
-                            <td class="d-none d-sm-table-cell">{{ $answer->action }}</td>
+                            <td class="d-none d-sm-table-cell">{{ $actions[$answer->action] }}</td>
                             <td>
                                 <a href="{{ route('answers.edit', $answer->id)}}" class="btn btn-primary">Edit</a>
                             </td>
