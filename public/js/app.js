@@ -36863,6 +36863,7 @@ var receiveAnswer = function receiveAnswer(response) {
 $(buttonLauncher).on('click', function () {
   animateChat(400);
   $(buttonClose).show();
+  $(questionTextarea).focus();
 });
 $(buttonClose).on('click', function () {
   animateChat(46);
@@ -36872,7 +36873,8 @@ $(chatContainer).on('click', questionFeedback, function (e) {
   e.preventDefault();
   sendQuestion($(e.target).text());
 });
-$(buttonSend).on('click', function () {
+
+var askQuestion = function askQuestion() {
   var questionInput = $(questionTextarea);
   var message = questionInput.val().replace(/(<([^>]+)>)/ig, "");
 
@@ -36881,6 +36883,18 @@ $(buttonSend).on('click', function () {
     sendQuestion(message);
   } else {
     questionInput.focus();
+  }
+};
+
+$(buttonSend).on('click', function () {
+  askQuestion();
+});
+$(questionTextarea).on('keydown', function (e) {
+  var code = e.which;
+
+  if (code === 13) {
+    e.preventDefault();
+    askQuestion();
   }
 });
 

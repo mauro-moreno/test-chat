@@ -123,6 +123,7 @@ const receiveAnswer = response => {
 $(buttonLauncher).on('click', () => {
     animateChat(400);
     $(buttonClose).show();
+    $(questionTextarea).focus();
 });
 
 $(buttonClose).on('click', () => {
@@ -135,7 +136,7 @@ $(chatContainer).on('click', questionFeedback, (e) => {
     sendQuestion($(e.target).text());
 });
 
-$(buttonSend).on('click', () => {
+const askQuestion = () => {
     const questionInput = $(questionTextarea);
     const message = questionInput.val().replace(/(<([^>]+)>)/ig,"");
     if (message !== '') {
@@ -143,5 +144,18 @@ $(buttonSend).on('click', () => {
         sendQuestion(message);
     } else {
         questionInput.focus();
+    }
+};
+
+$(buttonSend).on('click', () => {
+    askQuestion();
+});
+
+$(questionTextarea).on('keydown', (e) => {
+    const code = e.which;
+
+    if (code === 13) {
+        e.preventDefault();
+        askQuestion();
     }
 });
