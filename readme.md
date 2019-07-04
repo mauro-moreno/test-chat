@@ -84,7 +84,7 @@ and their [Answers](https://github.com/mauro-moreno/test-chat/blob/master/databa
 
 `$ npm install`
 
-`$ npm test`
+`$ ./vendor/bin/phpunit`
 
 ## Test questions and answers.
 
