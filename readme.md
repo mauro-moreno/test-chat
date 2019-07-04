@@ -23,6 +23,7 @@ and their [Answers](https://github.com/mauro-moreno/test-chat/blob/master/databa
     - **Derive answer**. If a derive answer is found, chat respond its text and derive to a human operator.
   - **More than one**. If more than one answer is found, chat response is a list of possible questions that user
     could have possible asked.
+- Close button
     
 ### Admin features
 
