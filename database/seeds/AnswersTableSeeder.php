@@ -20,7 +20,7 @@ class AnswersTableSeeder extends Seeder
 
         $answer = new Answer();
         $answer->language_id = 'es';
-        $answer->question = 'Cuanto cuesta una bicicleta?';
+        $answer->question = 'Cuanto cuesta una bicicleta';
         $answer->answer = '$200';
         $answer->save();
 
@@ -46,7 +46,7 @@ class AnswersTableSeeder extends Seeder
 
         $answer = new Answer();
         $answer->language_id = 'en';
-        $answer->question = 'Shipping costs';
+        $answer->question = 'Shipping cost';
         $answer->answer = 'Shipping costs $100.';
         $answer->save();
 
