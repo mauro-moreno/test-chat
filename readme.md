@@ -37,8 +37,18 @@ and their [Answers](https://github.com/mauro-moreno/test-chat/blob/master/databa
 ## Requirements
 
 - [Git](https://git-scm.com/downloads)
-- Laravel ready server or
 - [Docker](https://www.docker.com/products/docker/) `>= 17.12`
+- If not using docker, requirements:
+  - PHP >= 7.1.3
+  - BCMath PHP Extension
+  - Ctype PHP Extension
+  - JSON PHP Extension
+  - Mbstring PHP Extension
+  - OpenSSL PHP Extension
+  - PDO PHP Extension
+  - Tokenizer PHP Extension
+  - XML PHP Extension
+  - MySQL
 
 ## Installation
 
