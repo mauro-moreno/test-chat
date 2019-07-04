@@ -12,7 +12,8 @@ and their [Answers](https://github.com/mauro-moreno/test-chat/blob/master/databa
 - Multi-language
 - Test page at [http://localhost/test/](). Optional parameter `language`.
 - Launcher button that opens interface with [BOBSHOP](https://www.bobshop.com) look and feel.
-- Interface shows a welcome message, input and send button [http://localhost/](). Optional parameter `langauge`
+- Interface shows a welcome message, input, close button and send button at [http://localhost/](). Optional parameter
+  `langauge`
 - Message can also be sent pressing Enter button.
 - Message is sent to [http://localhost/api/{language}/chat/ask](). Required parameter `language`.
 - Possible answers:
